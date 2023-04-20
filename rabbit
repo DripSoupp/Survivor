@@ -1,0 +1,15 @@
+rows = int(input("Enter the number of rows in the garden: "))
+cols = int(input("Enter the number of columns in the garden: "))
+
+garden = []
+for i in range(rows):
+    row = input(f"Enter the carrots in row {i+1}: ").split()
+    garden.append([int(x) for x in row])
+
+total_carrots = sum(sum(row) for row in garden)
+
+max_carrots = max(max(row) for row in garden)
+
+num_jumps = total_carrots // max_carrots
+
+print(f"The rabbit needs to jump {num_jumps} times to eat all the carrots.")
