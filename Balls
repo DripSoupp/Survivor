@@ -1,0 +1,25 @@
+# Initialize an empty dictionary to store the counts of balls for each color
+balls = {}
+
+# Read input until "End" is entered
+while True:
+    try:
+        line = input()
+        if not line:  # check if the input is empty
+            raise ValueError("Input can't be empty. Please try again.")
+        if line == "End":
+            break
+        color, count = line.split(": ")
+        count = int(count)
+        if color in balls:
+            balls[color] += count
+        else:
+            balls[color] = count
+    except ValueError as e:
+        print(e)
+
+# Find the maximum count of balls for a single color
+max_count = max(balls.values())
+
+# Print the result
+print(sum(balls.values()) - max_count)
