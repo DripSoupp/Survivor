@@ -1,0 +1,33 @@
+# Get the input words from the user
+word1 = input("Enter the first word: ")
+word2 = input("Enter the second word: ")
+
+# Initialize variables to count the number of letters removed from each word
+removed_from_word1 = 0
+removed_from_word2 = 0
+
+# Convert the words to sets of characters and find their intersection
+letters1 = set(word1)
+letters2 = set(word2)
+common_letters = letters1.intersection(letters2)
+
+# Remove letters that are not in the intersection from both words
+new_word = ""
+for letter in word1:
+    if letter in common_letters and letter not in new_word:
+        new_word += letter
+    else:
+        removed_from_word1 += 1
+
+for letter in word2:
+    if letter in common_letters and letter not in new_word:
+        new_word += letter
+    else:
+        removed_from_word2 += 1
+
+# Find the total number of letters removed from both words
+total_removed = removed_from_word1 + removed_from_word2
+
+# Print the result and the resulting word
+print(f"Number of letters removed: {total_removed}")
+print(f"New word: {new_word}")
